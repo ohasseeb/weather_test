@@ -33,6 +33,10 @@ class App extends React.Component {
 
   searchForTheWeather = () => {
     var APPID = this.state.cityinput;
+
+    if (APPID == " ") {
+      APPID = "Alameda";
+    }
     console.log(this.state.cityinput);
     var weather_url =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -48,6 +52,7 @@ class App extends React.Component {
     const { totalReactPackages } = this.state;
     return (
       <div className="card text-center m-3">
+        <h1> Not your Average Weather App</h1>
         <label htmlFor="WeatherInput"> City </label>
         <input
           id="WeatherInput"
