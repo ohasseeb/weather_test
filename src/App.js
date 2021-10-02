@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./weatherstyling.css";
+import { Weather } from "./components/weather/weather-component";
 
 class App extends React.Component {
   constructor(props) {
@@ -73,31 +74,34 @@ class App extends React.Component {
               Search
             </button>
             <h5 className="card-header">Daily Weather</h5>
-            <div className="card-body">
-              <br />
-              City: {totalReactPackages.name ? totalReactPackages.name : " "}
-              <br />
-              Temp:{" "}
-              {totalReactPackages.main
-                ? totalReactPackages.main.temp + " °F"
-                : " "}
-              <br />
-              Feels Like :{""}
-              {totalReactPackages.main
-                ? totalReactPackages.main.feels_like + " °F"
-                : " "}
-              {console.log(totalReactPackages)}
-              <br />
-              Description :{""}
-              {totalReactPackages.main
-                ? totalReactPackages.weather[0].main
-                : " "}
-              {console.log(
+            <Weather fieldName="City" fieldValue={totalReactPackages.name}>
+              {" "}
+            </Weather>
+            <Weather
+              fieldName="Temp"
+              fieldValue={
+                totalReactPackages.main
+                  ? totalReactPackages.main.temp + " °F"
+                  : ""
+              }
+            />
+            <Weather
+              fieldName="Feels Like"
+              fieldValue={
+                totalReactPackages.main
+                  ? totalReactPackages.main.feels_like + " °F"
+                  : " "
+              }
+            />
+
+            <Weather
+              fieldName="Description"
+              fieldValue={
                 totalReactPackages.main
                   ? totalReactPackages.weather[0].main
                   : " "
-              )}
-            </div>
+              }
+            />
           </div>{" "}
           {/*End before Weather Div */}
         </div>{" "}
