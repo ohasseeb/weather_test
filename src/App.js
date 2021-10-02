@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./weatherstyling.css";
 
 class App extends React.Component {
   constructor(props) {
@@ -9,6 +10,10 @@ class App extends React.Component {
       cityinput: " ",
     };
   }
+
+  // How to do Dupes cities
+  // Add The Degree Fairenheight
+  //
 
   componentDidMount(props) {
     // Simple GET request using fetch
@@ -37,6 +42,8 @@ class App extends React.Component {
     if (APPID == " ") {
       APPID = "Alameda";
     }
+
+    APPID = APPID.toLocaleLowerCase();
     console.log(this.state.cityinput);
     var weather_url =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -52,36 +59,49 @@ class App extends React.Component {
     const { totalReactPackages } = this.state;
     return (
       <div className="card text-center m-3">
-        <h1> Not your Average Weather App</h1>
-        <label htmlFor="WeatherInput"> City </label>
-        <input
-          id="WeatherInput"
-          type="text"
-          placeholder="Alameda "
-          onChange={this.handleChange}
-        />
-
-        <button value onClick={this.handleSubmit}>
-          Search
-        </button>
-
-        <h5 className="card-header">Daily Weather</h5>
-        <div className="card-body">
-          <br />
-          City: {totalReactPackages.name ? totalReactPackages.name : " "}
-          <br />
-          Temp: {totalReactPackages.main ? totalReactPackages.main.temp : " "}
-          <br />
-          Feels Like:{""}
-          {totalReactPackages.main ? totalReactPackages.main.feels_like : " "}
-          {console.log(totalReactPackages)}
-          <br />
-          Description:{""}
-          {totalReactPackages.main ? totalReactPackages.weather[0].main : " "}
-          {console.log(
-            totalReactPackages.main ? totalReactPackages.weather[0].main : " "
-          )}
-        </div>
+        <div className="weatherStyle weather">
+          <div className="border">
+            <h1> Not your Average Weather App</h1>
+            <label htmlFor="WeatherInput"> City </label>
+            <input
+              id="WeatherInput"
+              type="text"
+              placeholder="Alameda "
+              onChange={this.handleChange}
+            />
+            <button value onClick={this.handleSubmit}>
+              Search
+            </button>
+            <h5 className="card-header">Daily Weather</h5>
+            <div className="card-body">
+              <br />
+              City: {totalReactPackages.name ? totalReactPackages.name : " "}
+              <br />
+              Temp:{" "}
+              {totalReactPackages.main
+                ? totalReactPackages.main.temp + " °F"
+                : " "}
+              <br />
+              Feels Like :{""}
+              {totalReactPackages.main
+                ? totalReactPackages.main.feels_like + " °F"
+                : " "}
+              {console.log(totalReactPackages)}
+              <br />
+              Description :{""}
+              {totalReactPackages.main
+                ? totalReactPackages.weather[0].main
+                : " "}
+              {console.log(
+                totalReactPackages.main
+                  ? totalReactPackages.weather[0].main
+                  : " "
+              )}
+            </div>
+          </div>{" "}
+          {/*End before Weather Div */}
+        </div>{" "}
+        {/*End Weather Div */}
       </div>
     );
   }

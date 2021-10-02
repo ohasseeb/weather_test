@@ -1,0 +1,22 @@
+.weatherStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather {
+  background-color: wheat;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+}
+
+.border {
+  border: blue;
+  border-style: dashed;
+}
+
+html {
+  background-color: aqua;
+  background-size: cover;
+}
