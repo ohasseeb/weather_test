@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./weatherstyling.css";
 import { Weather } from "./components/weather/weather-component";
+import sun from "./images/sun.png";
+import cloud from "./images/Cloud.png";
+import rain from "./images/Rain.png";
 
 class App extends React.Component {
   constructor(props) {
@@ -36,6 +39,27 @@ class App extends React.Component {
     this.searchForTheWeather();
     //this.setState({ cityInput: event.target.value });
   };
+
+  determineImage = (description) => {
+    description = description.toLocaleLowerCase();
+    if (description == "") {
+      return;
+    } else if (description == "clear") {
+      console.log("Sun Image");
+      return <img src={sun} alt="sun" />;
+    } else if (description == "cloudy" || description == "clouds") {
+      console.log("Cloud Image");
+      return <img src={cloud} alt="cloud" />;
+    } else if (description == "rainy" || description == "rain") {
+      // rain.png
+      console.log("Rain Image");
+      return <img src={rain} alt="rain" />;
+    } else {
+      console.log("Unsure on Image");
+      return <img src={sun} alt="unsureOnImage" />;
+      // return sun
+    }
+  }; // End Function
 
   searchForTheWeather = () => {
     var APPID = this.state.cityinput;
@@ -101,6 +125,11 @@ class App extends React.Component {
                   ? totalReactPackages.weather[0].main
                   : " "
               }
+              fieldImage={this.determineImage(
+                totalReactPackages.main
+                  ? totalReactPackages.weather[0].main
+                  : ""
+              )}
             />
           </div>{" "}
           {/*End before Weather Div */}
