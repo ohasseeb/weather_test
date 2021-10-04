@@ -5,22 +5,18 @@
 }
 
 .weather {
-  background-color: wheat;
+  background-color: red;
   height: 100%;
   width: 100%;
   background-size: cover;
 }
 
 .border {
-  /* border: blue; */
-  /* border-style: dashed; */
+  border: black;
+  border-style: dashed;
 }
 
 html {
-  background-color: aqua;
+  background-color: blueviolet;
   background-size: cover;
-}
-
-.weatherLabel {
-  font-weight: bolder;
 }

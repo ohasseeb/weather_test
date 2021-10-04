@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import "./weatherstyling.css";
+
 import { Weather } from "./components/weather/weather-component";
 import sun from "./images/sun.png";
 import cloud from "./images/Cloud.png";
 import rain from "./images/Rain.png";
+import weather1 from "./weatherstyling.css";
 
+//https://stackoverflow.com/questions/46835825/conditional-css-in-create-react-app
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -15,18 +17,7 @@ class App extends React.Component {
     };
   }
 
-  // How to do Dupes cities
-  // Add The Degree Fairenheight
-  //
-
-  componentDidMount(props) {
-    // Simple GET request using fetch
-    // fetch(
-    //   "https://api.openweathermap.org/data/2.5/weather?q=alameda&appid=5641904b9f9d3a2b1751db682fa354ff&units=imperial"
-    // )
-    //   .then((response) => response.json())
-    //   .then((data) => this.setState({ totalReactPackages: data }));
-  }
+  componentDidMount(props) {}
 
   handleChange = (event) => {
     // console.log(event.target.value);
@@ -84,7 +75,7 @@ class App extends React.Component {
     const { totalReactPackages } = this.state;
     return (
       <div className="card text-center m-3">
-        <div className="weatherStyle weather">
+        <div className="weatherStyle weather" style={this.styleFunction}>
           <div className="border">
             <h1> Not your Average Weather App</h1>
             <label htmlFor="WeatherInput"> City </label>
